@@ -107,10 +107,23 @@ const server = http.createServer((req, res) => {
     }
 
     // Your code here 
+    // phase 1: cat
     if (req.method === 'POST' && req.url === '/cat') {
-      // console.log(req.body);
       cat = new Cat(req.body);
-      // console.log(cat);
+      res.statusCode = 302;
+      res.setHeader('Location', '/');
+      res.end();
+      return;
+
+    } 
+
+    // phase 2: dog
+    if (req.method === 'POST' && req.url === '/dog') {
+      dog = new Dog(req.body);
+      res.statusCode = 302;
+      res.setHeader('Location', '/');
+      res.end();
+      return;
 
     } 
 
